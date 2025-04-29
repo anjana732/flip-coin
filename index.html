@@ -29,22 +29,35 @@
       font-size: 14px;
       text-align: center;
       margin-top: 16px;
-      color: rgb(55, 65, 81);
+      /* color: rgb(55, 65, 81); */
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+
+      padding: 10px;
+      font-size: 14px;
+
     }
 
     .author-info a {
       text-decoration: none;
+      color: rgb(104, 223, 223);
     }
 
     h1 {
       color: white;
+      font-size: 50px;
+      text-shadow: 10px 10px 20px rgba(2, 2, 2, 0.5);
+      ;
     }
 
-  
+
     .flip-container {
       perspective: 1000px;
-      width: 200px;
-      height: 200px;
+      width: 100px;
+      height: 100px;
     }
 
     .flipper {
@@ -75,7 +88,8 @@
       transform: rotateY(180deg);
     }
 
-    img {
+    #head,
+    #tail {
       width: 100%;
       height: 100%;
     }
@@ -83,8 +97,39 @@
     button {
       margin-top: 10px;
       background-color: rgba(11, 116, 236, 0.87);
-      padding: 10px;
+      border: 1px solid rgba(11, 116, 236, 0.8);
+      padding: 10px 20px;
       margin: 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      color: white;
+      font-weight: 600;
+    }
+
+    #pTail {
+      display: none;
+    }
+
+    .pclass {
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 8px;
+      padding: 8px;
+    }
+
+    h6 {
+      color: white;
+      font-size: 22px;
+      font-weight: 500;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    #shadow {
+      padding: 5px;
+      margin: 5px;
+      width: 80px;
     }
   </style>
 </head>
@@ -92,22 +137,21 @@
 <body>
 
 
-  <h1> Flip a Coin </h1>
+  <h1> Flip the Coin </h1>
   <h6>Press the coin or the button to flip the coin</h6>
   <div class="flip-container" id="flipBox">
     <div class="flipper">
       <div class="front">
-        <img id="head" src="resources/heads.svg" alt="Head Image">
+        <img id="head" src="resources/heads.svg" alt="Head Image" width="20px" height="20px">
       </div>
       <div class="back">
-        <img id="tail" src="resources/tails.svg" alt="Tail Image">
+        <img id="tail" src="resources/tails.svg" alt="Tail Image" width="20px" height="20px">
       </div>
-
     </div>
   </div>
-  <img src="resources/shadow.svg" alt="shadow Image">
-  <p> Head</p>
-  <p>Tail</p>
+  <img id="shadow" src="resources/shadow.svg" alt="shadow">
+  <p class="pclass" id="pHead"> Head</p>
+  <p class="pclass" id="pTail">Tail</p>
   <Button onclick="toggleImage()" id="btn">Random</Button>
 
 
@@ -119,15 +163,15 @@
 
   <script>
     function toggleImage() {
-      // const head = document.getElementById("head");
-      // const tail = document.getElementById("tail");
-      // if(tail.style.display === "none" || tail.style.display === ""){
-      //     head.style.display = "none"
-      //     tail.style.display = "block"  
-      //   }else{
-      //     tail.style.display="none"
-      //     head.style.display="block"
-      //   }
+      const pHead = document.getElementById("pHead");
+      const pTail = document.getElementById("pTail");
+      if (pTail.style.display === "none" || pTail.style.display === "") {
+        pHead.style.display = "none"
+        pTail.style.display = "block"
+      } else {
+        pTail.style.display = "none"
+        pHead.style.display = "block"
+      }
 
       document.getElementById('flipBox').classList.toggle('flipped');
     }
